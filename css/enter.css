@@ -1,0 +1,170 @@
+body {
+  background-color: #fff;
+  font-size: 16px;
+  width: 100%;
+  background: #f2f2f2;
+}
+
+html, body, p, h1, h2, h3, h4, h5, h6, table, tr, td, th, ol, ul, li, dl, dd, dt, label, input, fieldset, hr, form {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+#header {
+  width: 100%;
+  height: 69px;
+  background: white;
+  border-bottom: 1px solid #d9d9d9;
+}
+
+#header img {
+  margin-left: 175px;
+  margin-top: 5px;
+}
+
+#content1 {
+  width: 611px;
+  height: 477px;
+  overflow: hidden;
+  position: absolute;
+  left: 145px;
+  top: 90px;
+}
+
+#content1 img {
+  width: 611px;
+  height: 477px;
+}
+
+#content2 {
+  width: 325px;
+  height: 475px;
+  background: white;
+  border: 1px solid #d9d9d9;
+  position: absolute;
+  left: 756px;
+  top: 90px;
+}
+
+.right {
+  margin-left: 44px;
+}
+
+#right_1 h4 {
+  font-size: 22px;
+  color: #ff7e00;
+  font-weight: 100;
+  text-align: center;
+  margin-top: 28px;
+}
+
+#enterId {
+  width: 240px;
+  height: 34px;
+  border-radius: 5px;
+  border: 1px solid #cccccc;
+  margin-top: 21px;
+  text-indent: 10px;
+  outline: none;
+}
+
+#passId {
+  width: 240px;
+  height: 34px;
+  border-radius: 5px;
+  border: 1px solid #cccccc;
+  margin-top: 6px;
+  text-indent: 10px;
+  outline: none;
+  color: #999999;
+}
+
+#btnId {
+  width: 237px;
+  height: 34px;
+  border-radius: 5px;
+  border: 1px solid #eea236;
+  margin-top: 6px;
+  background: #f0ad4e;
+  color: white;
+  outline: none;
+  cursou: pointer;
+}
+
+#btnId:hover {
+  background: #ec971f;
+  cursor: pointer;
+}
+
+#right_5 {
+  width: 240px;
+  height: 58px;
+  line-height: 58px;
+  font-size: 12px;
+  color: #5b5b5b;
+}
+
+#right_5 a:hover {
+  color: #ec971f;
+}
+
+#right_6 {
+  width: 240px;
+  height: 18px;
+}
+
+#right_6 span {
+  font-size: 12px;
+  color: #5b5b5b;
+}
+
+#right_7 {
+  width: 100%;
+  height: 30px;
+  border-top: 1px dashed #dcdcdc;
+  margin-top: 5px;
+}
+
+#registerId {
+  width: 240px;
+  height: 34px;
+  border-radius: 5px;
+  border: 1px solid #cccccc;
+  margin-top: 21px;
+  text-indent: 10px;
+  outline: none;
+  background: white;
+}
+
+#registerId:hover {
+  background: #e6e6e6;
+  cursor: pointer;
+}
+
+#right_8_tit {
+  width: 240px;
+  height: 34px;
+  font-size: 12px;
+  color: #5b5b5b;
+  text-indent: 68px;
+  margin-top: 9px;
+}
+
+#footer_title {
+  width: 458px;
+  height: 20px;
+  margin-top: 497px;
+  margin-left: 350px;
+  font-size: 12px;
+  color: #999999;
+}
+
+#footer_title a {
+  color: #2ea7e0;
+}
+
+/*# sourceMappingURL=enter.css.map */
