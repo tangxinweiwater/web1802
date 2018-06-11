@@ -8,6 +8,9 @@
 </head>
 <body>
 <!-- header	 -->
+	<div id="hide_menu">
+
+	</div>
 	<div id="title">
 		<a href="#"><img src="img/logo.png"></a>
 		<a href="">品牌<img src="img/icon_4.png"></a>
@@ -20,11 +23,19 @@
 		<a href=""><img src="img/icon_2.png"></a>
 		<a href=""><img src="img/icon_1.png"></a>
 		<a href=""><img src="img/logo2.png"></a>
-	</div>
+	</div>;
 	<div id="header">
 		
 		<ul id="header_slide">
 			<li id="picId"></li>
+		</ul>
+		<ul id="beansId">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
 		</ul>
 	</div>
 
@@ -122,21 +133,77 @@
 	</div>
 </body>
 </html>
+<script type="text/javascript" src="jquery-1.8.3.min.js"></script>
 <script type="text/javascript">
 let arr=["banner1.png","banner2.png","banner3.png","banner4.png","banner5.png","banner6.png"];	
 let ord = 0;//ord表示下标
+let myTimer = null;
+let title_aDom = $("title").children;
+let hideDom = $("hide_menu");
 function $(id){
 	return document.getElementById(id);
 }
-window.onload = function(){
-	 setInterval(function(){
-		ord++;
 
-	if(ord>5){ 
-		ord=0;
+function initUI(){
+	$("beansId").children[0].style.cssText = "white";
+}
+
+
+function changeImg(){
+	myTimer = setInterval(function(){
+		ord = ord+1;
+
+		showImg(ord);
+	// if(ord>5){ 
+	// 	ord=0;
+	// 	}
+	// $("picId").style.backgroundImage="url(img/"+arr[ord]+")";	
+	// $("picId").style.backgroundRepeat="center top";	
+	},2000);
+}
+
+function showImg(transord){
+	ord = transord;
+	if(ord>arr.length-1 || ord<0){
+		ord = 0;
+	}
+	$("picId").style.backgroundImage="url(img/"+arr[ord]+")";
+	$("picId").style.backgroundRepeat="center top";
+
+	for(let i=0;i<arr.length;i++){
+		
+	$("beansId").children[i].style.backgroundColor = "white";
+	}
+	$("beansId").children[ord].style.backgroundColor = "#656972";
+}
+window.onload = function(){
+	initUI();
+	changeImg();
+
+	let btns = $("beansId").children;
+	for(let i=0;i<btns.length;i++){
+		btns[i].onclick = function(){
+			clearInterval(myTimer);
+			showImg(i);
+
 		}
-	$("picId").style.backgroundImage="url(img/"+arr[ord]+")";	
-	$("picId").style.backgroundRepeat="center top";	
-	},1500);
+	}
+
+	
+	title_aDom[1].onmouseover = function(){
+		let height1 = 0;//表示hide_menu初始高度
+		let htTimer = setInterval(function(){
+			height1 = height1+5;
+			if(height1>220){
+				clearInterval(htTimer);
+			}
+			hideDom.style.height = height1+"px";
+		},10)
+	}
+	title_aDom[1].onmouseout = function(){
+		hideDom.style.height = 0+"px";
+	}
+
+	
 }	
 </script>
