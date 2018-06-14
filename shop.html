@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<link rel="stylesheet" href="css/shop.css">
+</head>
+<body>
+<!-- header	 -->
+	<div id="title">
+		<div id="title_left">
+			<a href="">青橙官网</a>
+			<a href="">品牌</a>
+			<a href="">产品</a>
+			<a href="">活动</a>
+			<a href="">服务</a>
+		</div>
+
+		<div id="title_right">
+			<a href="">登录</a>|
+			<a href="">注册</a>|
+			<a href="">购物车<img src="img/icon_cart.jpg"></a>
+		</div>
+	</div>
+	<div id="header">
+		<div id="header_left">
+			<a href=""><img id="logoId" src="img/logov4.png"/></a>
+		</div>
+		<div id="header_right">
+			<a href="">青橙VOGA系列<img src="img/icon_3.png"/></a>
+			<a href="">青橙三好系列<img src="img/icon_3.png"></a>
+			<a href="">智能硬件<img src="img/icon_3.png"/></a>
+			<a href="">配件<img src="img/icon_3.png"/></a>
+		</div>
+	</div>
+<!-- content -->
+
+	<div id="fadeId">
+			<img src="img/shop1.jpg">
+			<img src="img/shop2.jpg">
+			<img src="img/shop3.jpg">
+			<img src="img/shop4.jpg">
+			<img src="img/shop5.jpg">
+		<ul id="beansId">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>    
+	</div>
+<!-- section -->
+	<div id="section">
+		<h2>明星机型</h2>
+	</div>
+	<div id="section_bottom">
+		<div id="section_bottomBox">
+			<div id="section_bottom_box1">
+				<a href="#" id="section_1">
+					<div id="section_1_left">
+						<h3>青橙VOGA V激光投影手机</h3>
+						<h6>
+							4G全网通 高清大屏<br/>
+							无需对焦 高清投影
+						</h6>
+						<div id="vPriceId">
+							<label>
+								<em>￥</em>
+								6888
+							</label>
+						</div>
+					</div>
+					<img id="section_1_right" src="img/index-star-vogav.png">
+				</a>
+			</div>
+
+			<div id="section_bottom_box2">
+				<a href="#" id="section_2">
+					<img src="img/index-star-c3.png">
+					<h3>青橙C3</h3>
+					<h6>极简手机</h6>
+					<div id="c3PriceId">
+						<label>
+							<em>￥</em>
+							499
+						</label>
+					</div>
+				</a>
+			</div>
+
+			<div id="section_bottom_box3">
+				<a href="#" id="section_3">
+					<div id=""></div>
+					<img src="img/">
+				</a>
+			</div>
+
+			<div id="section_bottom_box4">
+				<a href="#" id="section_4">
+					<div id=""></div>
+					<img src="img/">
+				</a>
+			</div>
+
+			<div id="section_bottom_box5">
+				<a href="#" id="section_5">
+					<div id=""></div>
+					<img src="img/">
+				</a>
+			</div>
+		</div>
+		<div id="section_bottom_box6">
+			<a href="#" id="section_6">
+				<div id=""></div>
+				<img src="img/">
+			</a>
+		</div>
+
+	</div>
+</body>
+</html>
+<script>        
+
+
+function $(id){
+	return document.getElementById(id);
+}
+
+let imgs = ["shop1.jpg","shop2.jpg","shop3.jpg","shop4.jpg","shop5.jpg"];
+let hrefs = ["http://shop.qingcheng.com/shop/p-1610","http://shop.qingcheng.com/shop/p-1609","http://shop.qingcheng.com/shop/p-1604","http://shop.qingcheng.com/shop/p-1605","http://shop.qingcheng.com/shop/p-1602"];
+let ord = 0;//表示下标
+let myTimer =null; 
+let fadeTimer=null;//淡入淡出效果的定时器；
+
+//初始化界面的函数
+function initUI(){
+	$("beansId").children[0].style.cssText = "width:18px;height:18px;border-radius:50%;";
+	//把所有图片的透明度设置为0
+	let imgDoms = $("fadeId").children;
+	for(let i=0;i<imgs.length;i++){
+		imgDoms[i].style.opacity = 0;
+	}
+	imgDoms[0].style.opacity = 1;
+}
+
+//动态改变图片
+function changeImg(){
+	myTimer = setInterval(function(){
+		//一、数据处理
+		//1、改变图片序号义淡出（消失）的图片序号
+		let outOrd = ord;//定
+		ord=ord+1;
+		//2、改变外观（显示对应的图片）
+		showImg(outOrd,ord);
+	},2000);
+}
+
+//显示指定的图片（根据指定的图片序号）
+function showImg(outOrd,transOrd){//2,4
+	//一、数据处理
+	//1、数据改变
+	ord=transOrd;
+	//2、边界（数据合法性）
+	if(ord>imgs.length-1 || ord<0){
+		ord=0;
+	}
+	//二、外观
+	//调用淡入淡出函数就行了
+	//$("imgId").src="img/"+imgs[ord];
+	fadeInOut(outOrd,ord);//2,4
+	
+	//把所有豆豆都变成原始颜色。
+	for(let i=0;i<imgs.length;i++){
+		$("beansId").children[i].style.cssText = "width:12px;height:12px;border-radius:50%;";
+	}
+	//把当前豆豆变成高亮颜色。
+	$("beansId").children[ord].style.cssText = "width:18px;height:18px;border-radius:50%;";
+}
+
+//淡入淡出效果
+function fadeInOut(outOrd,inOrd){//2,4
+	if(outOrd==inOrd){
+		return;
+	}
+	let currOpacity = 1;
+	fadeTimer = setInterval(function(){
+		//数据改变
+		currOpacity-=0.01; //0.99
+		//边界处理
+		if(currOpacity<=0){
+			currOpacity = 0; 
+			clearInterval(fadeTimer);
+			fadeTimer = null;
+		}
+		//改变外观
+		let imgDoms = $("fadeId").children;
+		imgDoms[outOrd].style.opacity = currOpacity;
+		imgDoms[inOrd].style.opacity = 1-currOpacity;		
+	},10);
+}
+
+window.onload = function(){	
+	initUI();
+	
+	//循环给每个img标记增加onclick事件，目的是跳转到对应的连接
+	let imgDoms = $("fadeId").children;
+	for(let i=0;i<imgs.length;i++){
+		imgDoms[i].onclick = function(){
+			window.location.href = hrefs[i];
+		}
+	}
+	
+	changeImg();
+	
+	$("fadeId").onmouseover = function(){
+		clearInterval(myTimer);
+	}
+	$("fadeId").onmouseout = function(){
+		changeImg();
+	}
+	
+	let lis = $("beansId").children;
+	for(let i=0;i<lis.length;i++){
+		lis[i].onclick = function(){
+			clearInterval(myTimer);
+			//清除当前淡入淡出的定时器
+			if(fadeTimer!=null){
+				clearInterval(fadeTimer);			
+			}
+			showImg(ord,i);//showImg(2,4);
+		}
+	}
+}
+
+</script>

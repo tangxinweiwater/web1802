@@ -15,19 +15,20 @@
 		<img src="img/enter1.jpg">
 	</div>
 	<div id="content2">
-		<form action=""></form>
+		<form action="">
 			<div id="right_1">
 				<h4>欢迎登录青橙账户</h4>
 			</div>
 			<div id="right_2" class="right">
-				<input id="enterId" type="text" placeholder="用户名或手机号">
+				<input id="enterId" name="username" type="text" placeholder="用户名或手机号">
 			</div>
 			<div id="right_3" class="right">
-				<input id="passId" type="password" placeholder="登录密码"><br/>
+				<input id="passId" name="userpass" type="password" placeholder="登录密码"><br/>
 			</div>
 			<div id="right_4" class="right">
 				<input id="btnId" type="button" value="立即登录">
 			</div>
+			<p id="errMsg" class="right">！用户名不存在或者密码不正确</p>
 			<div id="right_5" class="right">
 				<a href="https://passport.qingcheng.com/p/password/forgetpassword">找回密码</a>
 			</div>
@@ -52,3 +53,45 @@
 	</p>
 </body>
 </html>
+<script type="text/javascript" src="js/cookieUtil.js" ></script>
+<script type="text/javascript">
+function $(id){
+	return document.getElementById(id);
+}
+
+window.onload = function(){
+	$("enterId").onfocus = function(){
+		$("enterId").style.cssText = "border:1px solid #66afea;";
+	}
+	$("enterId").onblur = function(){
+		$("enterId").style.cssText = "border:1px solid #cccccc;";
+	}
+	$("passId").onfocus = function(){
+		$("passId").style.cssText = "border:1px solid #66afea;";
+	}
+	$("passId").onblur = function(){
+		$("passId").style.cssText = "border:1px solid #cccccc;";
+	}
+
+	$("btnId").onclick = function(){
+		let xhr = new XMLHttpRequest();
+		xhr.open("post","enter.php",true);
+
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState==4 && xhr.status==200){
+				if(xhr.responseText==1){
+					
+					alert("登录成功");
+				}else{
+					$("errMsg").style.display = "block";
+				}
+				
+			}
+		}
+		xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+		let sendstr = "username="+$("enterId").value+"&userpass="+$("passId").value;
+		xhr.send(sendstr);
+
+	}
+}	
+</script>

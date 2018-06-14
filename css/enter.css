@@ -100,6 +100,12 @@ a {
   cursor: pointer;
 }
 
+#errMsg {
+  color: red;
+  font-size: 12px;
+  display: none;
+}
+
 #right_5 {
   width: 240px;
   height: 58px;

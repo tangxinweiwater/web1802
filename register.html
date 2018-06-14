@@ -20,6 +20,7 @@
 			<form>
 				<div id="content_2_one">
 					<input id="usernameId" type="text" placeholder="注册手机号">
+					<p id="usernameMsg"></p>
 				</div>
 				<div id="content_2_two">
 					<input id="passwordId" type="password" placeholder="登录密码(长度在8-15位之间)">
@@ -50,3 +51,35 @@
 	</div>
 </body>
 </html>
+<script type="text/javascript">
+function $(id){
+	return document.getElementById(id);
+}
+
+window.onload = function(){
+	$("usernameId").onfocus = function(){
+		$("usernameId").style.cssText = "border:1px solid #66afea;";
+	}
+	$("usernameId").onblur = function(){
+		$("usernameId").style.cssText = "border:1px solid #cccccc;";
+	}
+	$("passwordId").onfocus = function(){
+		$("passwordId").style.cssText = "border:1px solid #66afea;";
+	}
+	$("passwordId").onblur = function(){
+		$("passwordId").style.cssText = "border:1px solid #cccccc;";
+	}
+	$("confirmId").onfocus = function(){
+		$("confirmId").style.cssText = "border:1px solid #66afea;";
+	}
+	$("confirmId").onblur = function(){
+		$("confirmId").style.cssText = "border:1px solid #cccccc;";
+	}
+	$("mesgId").onfocus = function(){
+		$("mesgId").style.cssText = "border:1px solid #66afea;";
+	}
+	$("mesgId").onblur = function(){
+		$("mesgId").style.cssText = "border:1px solid #cccccc;";
+	}
+}	
+</script>

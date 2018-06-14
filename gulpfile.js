@@ -15,6 +15,20 @@ gulp.task("copyimg",function(){
 	
 });
 
+//复制js
+gulp.task("copyjs",function(){
+	gulp.src("js/*.js").pipe(gulp.dest("D:\\phpStudy\\WWW\\web1802\\js"));
+	
+	
+});
+
+//复制php
+gulp.task("copyphp",function(){
+	gulp.src("*.php").pipe(gulp.dest("D:\\phpStudy\\WWW\\web1802"));
+	
+	
+});
+
 //压缩js
 //gulp.task("uglifyjs",function(){
 //	gulp.src("js/*.js")
